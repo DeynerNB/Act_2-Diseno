@@ -5,6 +5,8 @@
  */
 package controller;
 
+import controller.DAO.SingletonDAO;
+import java.util.ArrayList;
 import java.util.List;
 import model.Carrera;
 import model.Configuracion;
@@ -73,6 +75,32 @@ public class Controlador {
     public FormularioSolicitante getFormulario(int idSolic){
         return admFormularios.consultarFormulario(idSolic);
     }
+    //generrarCitas()
+    //llama al generar citas del Generador de Citas.
+    //recorrer todos los formularios, a los datos del examen Setear atributos. Enviar correo
+    //poner algunos Ausentes; y el rsto Candidato
+    private boolean generarCitas(){
+        
+        GeneradorCitas citas = new GeneradorCitas();
+        return citas.asignarCitasASolicitantes();
+    }
     
+    //simular aiplicacion()
+    //llamr al sumular del ADM formularios:
+    //todos los formularios NO ausentes , en datos de xmanen poner putaje.
+    //el puntje es de acuerdo al MAX establecido por la U
+    public void simularAplicacionExamen(){
+        admFormularios.simularAplicacionExamen();
+    }
     
+    //definir situacion()
+    //llamr al definir situacio del ADM formularios:
+    //todos los formularios de acuerdo a la Carrera y sede se hace un ranking decendente
+    //y de acuerdo ala Capacidad establecida. Se determinan los estados de aacuerdo al 
+    //punto 6
+    
+    public void definirSituacionCandidatos(){
+        
+        admFormularios.definirEstadoAdmisionCandidatos();
+    }
 }

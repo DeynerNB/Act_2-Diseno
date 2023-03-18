@@ -6,7 +6,17 @@
 package controller;
 
 import controller.DAO.SingletonDAO;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import model.Carrera;
+import model.CentroAplicacion;
+import model.Configuracion;
+import model.DatosExamen;
 import model.FormularioSolicitante;
+import model.TEstadoSolicitante;
 
 /**
  *
@@ -42,5 +52,58 @@ public class AdmFormularios {
     public FormularioSolicitante consultarFormulario (int idSolic){
         return SingletonDAO.getInstance().consultarFormulario(idSolic);
     }
+    public boolean registrarCitaExamen(int numero, Date fecha, CentroAplicacion lugar){
+        
+        DatosExamen examen = SingletonDAO.getInstance().consultarFormulario(numero).getDetalleExamen();
+        if(examen == null)return false;
+       
+        examen.setCitaExamen(fecha);
+        examen.setLugarExamen(lugar);
+        return true;
+    }
     
+    public void simularAplicacionExamen(){
+        //for poniendo los que no vinieron
+        //for poniendo puntajes a los que vinieron de acuerdo a ARCH Config Puntage Max
+        ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
+        int max = Configuracion.getInstance().getMaximoPuntaje();
+        for (FormularioSolicitante formulario : formulariosRegistrados) {
+            int random = (int)(Math.random()*(1-5+1)+5);
+            if(random == 2) {
+                formulario.setEstado(TEstadoSolicitante.AUSENTE);
+                formulario.getDetalleExamen().setPuntajeObtenido(0);
+            }
+            else{
+                int rand = (int)(Math.random()*(400-max+1)+max);
+                formulario.getDetalleExamen().setPuntajeObtenido(rand);
+            }
+        }
+    }
+    
+    public void definirEstadoAdmisionCandidatos(){
+        
+        //for formularios: condiciones de punto 6
+        ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
+        Collections.sort(formulariosRegistrados,new RankingNotas());
+        HashMap<String, Carrera> mapaCarreras = new HashMap<>();
+        
+        for (Carrera carrera : SingletonDAO.getInstance().getCarreras()) {
+            mapaCarreras.put(carrera.getCodigo()+carrera.getSede().getCodigo(), carrera);
+        }
+        
+        
+        for (FormularioSolicitante formulario : formulariosRegistrados) {
+            
+            String clave = formulario.getCarreraSolic().getCodigo()+formulario.getCarreraSolic().getSede().getCodigo();
+            if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo()
+                    && mapaCarreras.get(clave).getMaxAdmision() > 0){
+                formulario.setEstado(TEstadoSolicitante.ADMITIDO);
+                mapaCarreras.get(clave).setMaxAdmision(mapaCarreras.get(clave).getMaxAdmision()-1);
+            }
+            else if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo())
+                formulario.setEstado(TEstadoSolicitante.POSTULANTE);
+            else
+                formulario.setEstado(TEstadoSolicitante.RECHAZADO);
+        }
+    }
 }

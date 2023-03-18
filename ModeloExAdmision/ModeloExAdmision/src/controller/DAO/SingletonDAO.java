@@ -78,6 +78,15 @@ public class SingletonDAO {
         // pendiente: conectar a la persistencia y recuperar las sedes
         return tablaSedes;
     }
+
+    public ArrayList<FormularioSolicitante> getTablaFormularios() {
+        return tablaFormularios;
+    }
+
+    public ArrayList<CentroAplicacion> getTablaCentros() {
+        return tablaCentros;
+    }
+    
     
     public List<Carrera> consultarCarrerasdeUnaSede (String unaSede){
         List<Carrera> carrerasSede =new ArrayList();
