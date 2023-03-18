@@ -1,5 +1,5 @@
-ModeloExAdmision/ModeloExAdmision/build
-ModeloExAdmision/ModeloExAdmision/dist
-ModeloExAdmision/ModeloExAdmision/nbproject
+ModeloExAdmision/ModeloExAdmision/build/*
+ModeloExAdmision/ModeloExAdmision/dist/*
+ModeloExAdmision/ModeloExAdmision/nbproject/*
 ModeloExAdmision/ModeloExAdmision/build.xml
 ModeloExAdmision/ModeloExAdmision/manifest.mf
