@@ -171,7 +171,7 @@ public class FormularioSolicitante {
     
     @Override
     public String toString() {
-        return "FormularioSolicitante:\n " + 
+        return "FormularioSolicitante:\n" + 
                 "numero=" + numero + "\n" +
                 "fecha=" + formatoFecha(fecha) + "\n" + 
                 "idSolic=" + idSolic + "\n" + 

@@ -9,8 +9,11 @@ import controller.Controlador;
 import controller.DAO.SingletonDAO;
 import controller.DTOFormulario;
 import controller.IParametros;
+import java.util.ArrayList;
+import model.Carrera;
 import model.Configuracion;
 import model.DireccionPCD;
+import model.FormularioSolicitante;
 
 /**
  *
@@ -26,54 +29,78 @@ public class ModeloExAdmision {
     
     
     public static void demoFormulario(){
-    int idSolic = 1000;
-    String nombreSolic ="Solicitante 1000";
-    String correoSolic ="correo1000@gmail.com";
-    String celularSolic ="8123-4567";
-    String colegioSolic ="Colegio del Solicitante 1000";
-    DireccionPCD dirSolic = SingletonDAO.getInstance().getPCD(4); 
-    String detalleDir = "Cerquita del Morazán";
-    String carreraSolic = "IC";
-    String sedeSolic = "SJ";
-    
-    DTOFormulario elDTO = new  DTOFormulario(idSolic, nombreSolic, 
-                                correoSolic, celularSolic, colegioSolic, 
-                                dirSolic, detalleDir, carreraSolic, sedeSolic);
-    
-    boolean resultado = elCtrl.registrarFormulario(elDTO);
-    System.out.println( resultado   ? "Formulario registrado y es el numero: "+
-            elCtrl.getFormulario(idSolic): "No pudo registrar el formulario");
+        
+        for (int i = 0; i < 5; i++) {
+            
+            int idSolic = i+1000;
+            String nombreSolic ="Solicitante "+idSolic;
+            String correoSolic ="correo"+idSolic+"@gmail.com";
+            String celularSolic ="8123-"+idSolic;
+            String colegioSolic ="Colegio del Solicitante "+idSolic;
+            int random = (int)(Math.random()*(0-6+1)+6);
+            DireccionPCD dirSolic = SingletonDAO.getInstance().getPCD(random); 
+            String detalleDir = "Cerquita del Morazán";
+            random = (int)(Math.random()*(0-3+1)+3);
+            String carreraSolic = elCtrl.getCarreras().get(random).getCodigo();
+            String sedeSolic = elCtrl.getCarreras().get(random).getSede().getCodigo();
+            
+            DTOFormulario elDTO = new  DTOFormulario(idSolic, nombreSolic, 
+                                        correoSolic, celularSolic, colegioSolic, 
+                                        dirSolic, detalleDir, carreraSolic, sedeSolic);
+
+            boolean resultado = elCtrl.registrarFormulario(elDTO);
+            
+            System.out.println( resultado   ? "---------------------------------"+ "\n"
+                    + "FORMULARIO REGISTRADO!!! "+ "\n"+
+                    elCtrl.getFormulario(idSolic).toString(): "No pudo registrar el formulario");
+        }
+        //System.out.println("AQUI");
+        elCtrl.simularAplicacionExamen();
+        
+        elCtrl.definirSituacionCandidatos();
+        
+        System.out.println("\n\n---------------------------------\n"
+                + "FORMULARIOS PROCESADOS: \n---------------------------------\n");
+        for (FormularioSolicitante formulario : SingletonDAO.getInstance().getTablaFormularios()) {
+            
+            System.out.println("---------------------------------"+ "\n"
+                    + "FORMULARIO PROCESADOS!!! "+ "\n"+
+                    formulario.toString());
+            
+        }
     }
     
+    
     public static void demoCarreras(){
-        System.out.println("Visualizar todas las carreras de la institucion");
-        System.out.println(elCtrl.getCarreras());
+        //System.out.println("Visualizar todas las carreras de la institucion");
+        //System.out.println(elCtrl.getCarreras());
         
         String unaSede = "SJ";
         String unaCarrera = "IC";
         int nuevoPuntajeCarrera= 600;
-        int nuevaAdmisionCarrera = 100;
+        int nuevaAdmisionCarrera = 1;//100
         
-        System.out.println("Modificar puntaje de admision a " + 
+        /*System.out.println("Modificar puntaje de admision a " + 
                             nuevoPuntajeCarrera +" de una carrera particular " + 
-                           unaSede+"-"+unaCarrera );
+                           unaSede+"-"+unaCarrera );*/
         boolean resultado = elCtrl.editarPuntajeMinimoAdmision(unaCarrera, unaSede, nuevoPuntajeCarrera);
-        System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de puntaje");
+        //System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de puntaje");
                 
-        System.out.println("Modificar capacidad de admision a " +
+        /*System.out.println("Modificar capacidad de admision a " +
                             nuevaAdmisionCarrera +" de una carrera particular " + 
-                           unaSede+"-"+unaCarrera );
+                           unaSede+"-"+unaCarrera );*/
         resultado = elCtrl.editarCapacidadAdmision(unaCarrera, unaSede, nuevaAdmisionCarrera);
-        System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de capacidad de admision");
+        //System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de capacidad de admision");
 
-        System.out.println("visualizar las carreras de la sede "+ unaSede);
-        System.out.println(elCtrl.getCarrerasPorSede(unaSede));
+        //System.out.println("visualizar las carreras de la sede "+ unaSede);
+        //System.out.println(elCtrl.getCarrerasPorSede(unaSede));
         
     }
     
     public static void demoConfiguracion(){
         int nuevoPuntaje = 900;
         System.out.println("Obteniendo Puntaje General de Admisión actual" +
+         /*System.out.println("Obteniendo Puntaje General de Admisión actual" +
                             elCtrl.getPuntajeGeneralAdmision()); 
          
         System.out.println("Editando Puntaje General de Admisión ");
@@ -92,6 +119,8 @@ public class ModeloExAdmision {
         System.out.println("Guardando Configuración...");
         elCtrl.guardarConfiguracion();
         Configuracion.getInstance().guardarProperties();
+        elCtrl.guardarConfiguracion();*/
+       Configuracion.getInstance().guardarProperties();
     }
     
     public static void main(String[] args) {

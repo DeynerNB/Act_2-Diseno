@@ -6,24 +6,25 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
  * @author ersolano
  */
 public class DatosExamen {
-    private Calendar citaExamen;
+    private Date citaExamen;
     private CentroAplicacion lugarExamen;
     private int puntajeObtenido;
 
     public DatosExamen() {
     }
 
-    public Calendar getCitaExamen() {
+    public Date getCitaExamen() {
         return citaExamen;
     }
 
-    public void setCitaExamen(Calendar citaExamen) {
+    public void setCitaExamen(Date citaExamen) {
         this.citaExamen = citaExamen;
     }
 

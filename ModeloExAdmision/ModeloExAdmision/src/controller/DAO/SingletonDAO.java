@@ -38,14 +38,14 @@ public class SingletonDAO {
         tablaSedes.add(new Sede("AL","Alajuela"));      //tablaSedes.get(4)
 
         //carreras de Cartago
-        tablaCarreras.add(new Carrera("IC","Ingenieria en Computacion",tablaSedes.get(0), TGrado.BACHILLERATO, 140, 650));
-        tablaCarreras.add(new Carrera("PI","Ingenieria en Produccion Industrial",tablaSedes.get(0), TGrado.LICENCIATURA, 100, 620));
+        tablaCarreras.add(new Carrera("IC","Ingenieria en Computacion",tablaSedes.get(0), TGrado.BACHILLERATO, 1, 650));//140
+        tablaCarreras.add(new Carrera("PI","Ingenieria en Produccion Industrial",tablaSedes.get(0), TGrado.LICENCIATURA, 1, 620));//100
         
         // carreras de San Jose
         tablaCarreras.add(new Carrera("IC","Ingenieria en Computacion",tablaSedes.get(1), TGrado.BACHILLERATO, 140, 650));
         
         // carreras de Limon
-        tablaCarreras.add(new Carrera("PI","Ingenieria en Produccion Industrial",tablaSedes.get(2), TGrado.LICENCIATURA, 40, 520));
+        tablaCarreras.add(new Carrera("PI","Ingenieria en Produccion Industrial",tablaSedes.get(2), TGrado.LICENCIATURA, 1, 520));//40
                         
         // direcciones PCD
         tablaPCD.add(new DireccionPCD("Cartago", "Central", "Oriental"));       //0
@@ -78,6 +78,15 @@ public class SingletonDAO {
         // pendiente: conectar a la persistencia y recuperar las sedes
         return tablaSedes;
     }
+
+    public ArrayList<FormularioSolicitante> getTablaFormularios() {
+        return tablaFormularios;
+    }
+
+    public ArrayList<CentroAplicacion> getTablaCentros() {
+        return tablaCentros;
+    }
+    
     
     public List<Carrera> consultarCarrerasdeUnaSede (String unaSede){
         List<Carrera> carrerasSede =new ArrayList();
