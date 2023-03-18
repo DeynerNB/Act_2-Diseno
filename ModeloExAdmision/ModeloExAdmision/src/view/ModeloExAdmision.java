@@ -100,7 +100,6 @@ public class ModeloExAdmision {
     public static void demoConfiguracion(){
         int nuevoPuntaje = 900;
         System.out.println("Obteniendo Puntaje General de Admisión actual" +
-         /*System.out.println("Obteniendo Puntaje General de Admisión actual" +
                             elCtrl.getPuntajeGeneralAdmision()); 
          
         System.out.println("Editando Puntaje General de Admisión ");
@@ -119,8 +118,6 @@ public class ModeloExAdmision {
         System.out.println("Guardando Configuración...");
         elCtrl.guardarConfiguracion();
         Configuracion.getInstance().guardarProperties();
-        elCtrl.guardarConfiguracion();*/
-       Configuracion.getInstance().guardarProperties();
     }
     
     public static void main(String[] args) {
