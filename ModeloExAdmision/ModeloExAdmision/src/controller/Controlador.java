@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Carrera;
 import model.Configuracion;
@@ -72,6 +73,14 @@ public class Controlador {
     
     public FormularioSolicitante getFormulario(int idSolic){
         return admFormularios.consultarFormulario(idSolic);
+    }
+    
+    public FormularioSolicitante getResultadoAdmision(int idSolic) {
+        return admFormularios.getResultadoAdmision(idSolic);
+    }
+    
+    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(String nomCarrera) {
+        return admFormularios.getFormulariosPorCarrera(nomCarrera);
     }
     
     

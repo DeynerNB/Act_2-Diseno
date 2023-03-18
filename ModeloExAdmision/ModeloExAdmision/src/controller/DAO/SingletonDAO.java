@@ -133,4 +133,7 @@ public class SingletonDAO {
         return true;
     }
     
+    public ArrayList<FormularioSolicitante> getFormularios() {
+        return tablaFormularios;
+    }
 }

@@ -6,7 +6,10 @@
 package controller;
 
 import controller.DAO.SingletonDAO;
+import java.util.ArrayList;
 import model.FormularioSolicitante;
+
+import model.TEstadoSolicitante;
 
 /**
  *
@@ -43,4 +46,27 @@ public class AdmFormularios {
         return SingletonDAO.getInstance().consultarFormulario(idSolic);
     }
     
+    public FormularioSolicitante getResultadoAdmision(int idSolic) {
+        
+        FormularioSolicitante formSolc = SingletonDAO.getInstance().consultarFormulario(idSolic);
+        TEstadoSolicitante estadoForm = formSolc.getEstado();
+        
+        // Checkear si el estado del solicitante cambio
+        if (estadoForm == TEstadoSolicitante.ADMITIDO || estadoForm == TEstadoSolicitante.POSTULANTE || estadoForm == TEstadoSolicitante.RECHAZADO) {
+            return formSolc;
+        }
+        return null;
+    }
+    
+    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(String nomCarrera) {
+        ArrayList<FormularioSolicitante> forms = new ArrayList();
+        ArrayList<FormularioSolicitante> tablaFormularios = SingletonDAO.getInstance().getFormularios();
+        
+        for (FormularioSolicitante form : tablaFormularios) {
+            if (form.getCarreraSolic().getNombre().equals(nomCarrera)) {
+                forms.add(form);
+            }
+        }
+        return forms;
+    }
 }
