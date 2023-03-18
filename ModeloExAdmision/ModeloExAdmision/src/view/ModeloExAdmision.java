@@ -30,7 +30,7 @@ public class ModeloExAdmision {
     
     public static void demoFormulario(){
         
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             
             int idSolic = i+1000;
             String nombreSolic ="Solicitante "+idSolic;
@@ -58,9 +58,7 @@ public class ModeloExAdmision {
         elCtrl.simularAplicacionExamen();
         
         elCtrl.definirSituacionCandidatos();
-        
-        System.out.println("\n\n---------------------------------\n"
-                + "FORMULARIOS PROCESADOS: \n---------------------------------\n");
+
         for (FormularioSolicitante formulario : SingletonDAO.getInstance().getTablaFormularios()) {
             
             System.out.println("---------------------------------"+ "\n"
@@ -120,6 +118,15 @@ public class ModeloExAdmision {
         Configuracion.getInstance().guardarProperties();
     }
     
+    public static void demoVisualizarResultadoPorSolicitante(int idSolic) {
+        System.out.println(elCtrl.getResultadoAdmision(idSolic));
+    }
+    public static void demoVisualizarResultadoPorCarrera(boolean Ordenado) {
+        for (FormularioSolicitante form : elCtrl.getFormulariosPorCarrera(Ordenado)) {
+            System.out.println(form.getResultado());
+        }
+    }
+    
     public static void main(String[] args) {
         System.out.println("En demoConfiguracion");
         demoConfiguracion();
@@ -129,6 +136,14 @@ public class ModeloExAdmision {
         
         System.out.println("En demoFormulario");
         demoFormulario();
+        
+        System.out.println("En demoVisualizacion");
+        demoVisualizarResultadoPorSolicitante(1003);
+        
+        System.out.println("En demoVisualizacionPorCarrera - false");
+        demoVisualizarResultadoPorCarrera(false);
+        System.out.println("En demoVisualizacionPorCarrera - true");
+        demoVisualizarResultadoPorCarrera(true);
      }
     
 }

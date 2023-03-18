@@ -85,12 +85,12 @@ public class Controlador {
         return citas.asignarCitasASolicitantes();
     }
     
-    public FormularioSolicitante getResultadoAdmision(int idSolic) {
+    public String getResultadoAdmision(int idSolic) {
         return admFormularios.getResultadoAdmision(idSolic);
     }
     
-    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(String nomCarrera) {
-        return admFormularios.getFormulariosPorCarrera(nomCarrera);
+    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(boolean Ordenado) {
+        return admFormularios.getResultadosFormularios(Ordenado);
     }
     
     //simular aiplicacion()

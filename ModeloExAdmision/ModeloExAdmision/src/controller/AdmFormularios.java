@@ -11,13 +11,14 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import model.Carrera;
 import model.CentroAplicacion;
 import model.Configuracion;
 import model.DatosExamen;
 import model.FormularioSolicitante;
-import model.TEstadoSolicitante;
-
 import model.TEstadoSolicitante;
 
 /**
@@ -64,27 +65,46 @@ public class AdmFormularios {
         return true;
     }
     
-    public FormularioSolicitante getResultadoAdmision(int idSolic) {
+    public String getResultadoAdmision(int idSolic) {
         
         FormularioSolicitante formSolc = SingletonDAO.getInstance().consultarFormulario(idSolic);
+        if (formSolc == null)
+            return "Solicitante no registrado";
+        
         TEstadoSolicitante estadoForm = formSolc.getEstado();
         
         // Checkear si el estado del solicitante cambio
         if (estadoForm == TEstadoSolicitante.ADMITIDO || estadoForm == TEstadoSolicitante.POSTULANTE || estadoForm == TEstadoSolicitante.RECHAZADO) {
-            return formSolc;
+            return formSolc.strResultadoCompleto();
         }
-        return null;
+        return "Aun no se encuentra disponible";
     }
     
-    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(String nomCarrera) {
+    public ArrayList<FormularioSolicitante> getResultadosFormularios(boolean Ordenado) {
         ArrayList<FormularioSolicitante> forms = new ArrayList();
-        ArrayList<FormularioSolicitante> tablaFormularios = SingletonDAO.getInstance().getFormularios();
         
-        for (FormularioSolicitante form : tablaFormularios) {
-            if (form.getCarreraSolic().getNombre().equals(nomCarrera)) {
-                forms.add(form);
+        List<Carrera> tablaCarreras = SingletonDAO.getInstance().getCarreras();
+        Set<String> codigosCarreras = new HashSet<String>();
+        
+        // Añadimos los codigos de carreras al conjunto de codigos
+        for (Carrera carrSeleccionada : tablaCarreras) {
+            codigosCarreras.add(carrSeleccionada.getCodigo());
+        }
+        
+        // Agregamos los datos de carrera, solicitante y resultado
+        for (String codigoCarrera : codigosCarreras) {
+            forms.addAll(SingletonDAO.getInstance().getFormulariosPorCarrera(codigoCarrera));
+        }
+        
+        if (Ordenado) {
+            for (int i = 0; i < forms.size(); i++) {
+                if (!forms.get(i).aplicoPrueba()) {
+                    forms.remove(i);
+                    i--;
+                }
             }
         }
+        
         return forms;
     }
     public void simularAplicacionExamen(){

@@ -142,7 +142,14 @@ public class SingletonDAO {
         return true;
     }
     
-    public ArrayList<FormularioSolicitante> getFormularios() {
-        return tablaFormularios;
+    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(String codigo) {
+        
+        ArrayList<FormularioSolicitante> formularios = new ArrayList();
+        
+        for (FormularioSolicitante form : tablaFormularios) {
+            if (form.getCarreraSolic().getCodigo().equals(codigo))
+                formularios.add(form);
+        }
+        return formularios;
     }
 }
