@@ -73,7 +73,7 @@ public class AdmFormularios {
         
         TEstadoSolicitante estadoForm = formSolc.getEstado();
         
-        // Checkear si el estado del solicitante cambio
+        // Checkear si el estado del solicitante es permitido
         if (estadoForm == TEstadoSolicitante.ADMITIDO || estadoForm == TEstadoSolicitante.POSTULANTE || estadoForm == TEstadoSolicitante.RECHAZADO) {
             return formSolc.strResultadoCompleto();
         }
@@ -99,8 +99,7 @@ public class AdmFormularios {
         if (Ordenado) {
             for (int i = 0; i < forms.size(); i++) {
                 if (!forms.get(i).aplicoPrueba()) {
-                    forms.remove(i);
-                    i--;
+                    forms.remove(i--);
                 }
             }
         }

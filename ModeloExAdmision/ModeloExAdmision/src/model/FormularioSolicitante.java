@@ -188,17 +188,17 @@ public class FormularioSolicitante {
     }
     
     public String strResultadoCompleto() {
-        return  "idSolic=" + idSolic + "\n" + 
-                "nombreSolic=" + nombreSolic + "\n" + 
-                "correoSolic=" + correoSolic +  "\n" +
-                "celularSolic=" + celularSolic +  "\n" +
-                "colegioSolic=" + colegioSolic +  "\n" +
-                "dirSolic=" + dirSolicPCD + "\n" +
-                "detalleDirSolic=" + detalleDirSolic + "\n" + 
-                "carreraSolic=" + carreraSolic.getCodigo()+"-"+
+        return  "idSolic: " + idSolic + "\n" + 
+                "nombreSolic: " + nombreSolic + "\n" + 
+                "correoSolic: " + correoSolic +  "\n" +
+                "celularSolic: " + celularSolic +  "\n" +
+                "colegioSolic: " + colegioSolic +  "\n" +
+                "dirSolic: " + dirSolicPCD + "\n" +
+                "detalleDirSolic: " + detalleDirSolic + "\n" + 
+                "carreraSolic: " + carreraSolic.getCodigo()+"-"+
                                   carreraSolic.getSede().getCodigo() +  "\n" +
-                "estado=" + estado +  "\n" +
-                "nota =" + detalleExamen.getPuntajeObtenido() + '\n';
+                "estado: " + estado +  "\n" +
+                "nota: " + detalleExamen.getPuntajeObtenido() + '\n';
     }
     
     public String getResultado() {

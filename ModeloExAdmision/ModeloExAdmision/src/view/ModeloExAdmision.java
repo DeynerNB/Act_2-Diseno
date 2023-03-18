@@ -137,12 +137,12 @@ public class ModeloExAdmision {
         System.out.println("En demoFormulario");
         demoFormulario();
         
-        System.out.println("En demoVisualizacion");
+        System.out.println("> Visualizar resultado de 1 estudiante");
         demoVisualizarResultadoPorSolicitante(1003);
         
-        System.out.println("En demoVisualizacionPorCarrera - false");
+        System.out.println("> Visualizar resultados de cada carrera");
         demoVisualizarResultadoPorCarrera(false);
-        System.out.println("En demoVisualizacionPorCarrera - true");
+        System.out.println("> Visualizar resultados de cada carrera ordenados por estado");
         demoVisualizarResultadoPorCarrera(true);
      }
     
