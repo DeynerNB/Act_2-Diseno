@@ -90,6 +90,8 @@ public class Controlador {
     //todos los formularios NO ausentes , en datos de xmanen poner putaje.
     //el puntje es de acuerdo al MAX establecido por la U
     public void simularAplicacionExamen(){
+        this.generarCitas();
+        
         admFormularios.simularAplicacionExamen();
     }
     

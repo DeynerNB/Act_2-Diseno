@@ -24,10 +24,13 @@ public class GeneradorCitas {
     public boolean asignarCitasASolicitantes(){
         
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
+        
         for (FormularioSolicitante formulario : formulariosRegistrados) {
             int numero = (int)(Math.random()*(0-2+1)+2);
             CentroAplicacion lugar = SingletonDAO.getInstance().getTablaCentros().get(numero);
-            if(!(adm.registrarCitaExamen(formulario.getNumero(), new Date("11/11/11"), lugar))) return false;
+            
+            if(!(adm.registrarCitaExamen(formulario.getIdSolic(), new Date("11/11/11"), lugar))) return false;
+            
             this.notificarFormulario(formulario);
         }
         return true;

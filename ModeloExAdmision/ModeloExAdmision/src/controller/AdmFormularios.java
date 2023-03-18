@@ -32,7 +32,7 @@ public class AdmFormularios {
         // verifica que el solicitante no haya registrado otro anteriormente
         FormularioSolicitante elForm = SingletonDAO.getInstance().consultarFormulario (elDTO.getIdSolic());
         
-        if (elForm == null){
+        if (elForm == null && elDTO.getCarreraSolic() != null){
             elForm = new FormularioSolicitante();
             elForm.setIdSolic(elDTO.getIdSolic());
             elForm.setNombreSolic(elDTO.getNombreSolic());
@@ -68,13 +68,13 @@ public class AdmFormularios {
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
         int max = Configuracion.getInstance().getMaximoPuntaje();
         for (FormularioSolicitante formulario : formulariosRegistrados) {
-            int random = (int)(Math.random()*(1-5+1)+5);
+            int random = (int)(Math.random()*(1-10+1)+10);
             if(random == 2) {
                 formulario.setEstado(TEstadoSolicitante.AUSENTE);
                 formulario.getDetalleExamen().setPuntajeObtenido(0);
             }
             else{
-                int rand = (int)(Math.random()*(400-max+1)+max);
+                int rand = (int)(Math.random()*(600-max+1)+max);
                 formulario.getDetalleExamen().setPuntajeObtenido(rand);
             }
         }
@@ -94,16 +94,22 @@ public class AdmFormularios {
         
         for (FormularioSolicitante formulario : formulariosRegistrados) {
             
-            String clave = formulario.getCarreraSolic().getCodigo()+formulario.getCarreraSolic().getSede().getCodigo();
-            if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo()
-                    && mapaCarreras.get(clave).getMaxAdmision() > 0){
-                formulario.setEstado(TEstadoSolicitante.ADMITIDO);
-                mapaCarreras.get(clave).setMaxAdmision(mapaCarreras.get(clave).getMaxAdmision()-1);
+            if(formulario.getEstado() != TEstadoSolicitante.AUSENTE){
+                
+                String clave = formulario.getCarreraSolic().getCodigo()+formulario.getCarreraSolic().getSede().getCodigo();
+                if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo()
+                        && mapaCarreras.get(clave).getMaxAdmision() > 0){
+                    formulario.setEstado(TEstadoSolicitante.ADMITIDO);
+                    mapaCarreras.get(clave).setMaxAdmision(mapaCarreras.get(clave).getMaxAdmision()-1);
+                }
+                else if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo())
+                    formulario.setEstado(TEstadoSolicitante.POSTULANTE);
+                else
+                    formulario.setEstado(TEstadoSolicitante.RECHAZADO);
+            
             }
-            else if(formulario.getDetalleExamen().getPuntajeObtenido()>=mapaCarreras.get(clave).getPuntajeMinimo())
-                formulario.setEstado(TEstadoSolicitante.POSTULANTE);
-            else
-                formulario.setEstado(TEstadoSolicitante.RECHAZADO);
+            
+            
         }
     }
 }
