@@ -30,7 +30,7 @@ public class ModeloExAdmision {
     
     public static void demoFormulario(){
         
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 70; i++) {
             
             int idSolic = i+1000;
             String nombreSolic ="Solicitante "+idSolic;
@@ -54,9 +54,8 @@ public class ModeloExAdmision {
                     + "FORMULARIO REGISTRADO!!! "+ "\n"+
                     elCtrl.getFormulario(idSolic).toString(): "No pudo registrar el formulario");
         }
-        //System.out.println("AQUI");
-        elCtrl.simularAplicacionExamen();
         
+        elCtrl.simularAplicacionExamen();
         elCtrl.definirSituacionCandidatos();
 
         for (FormularioSolicitante formulario : SingletonDAO.getInstance().getTablaFormularios()) {
@@ -70,28 +69,28 @@ public class ModeloExAdmision {
     
     
     public static void demoCarreras(){
-        //System.out.println("Visualizar todas las carreras de la institucion");
-        //System.out.println(elCtrl.getCarreras());
+        System.out.println("Visualizar todas las carreras de la institucion");
+        System.out.println(elCtrl.getCarreras());
         
         String unaSede = "SJ";
         String unaCarrera = "IC";
         int nuevoPuntajeCarrera= 600;
-        int nuevaAdmisionCarrera = 1;//100
+        int nuevaAdmisionCarrera = 100;
         
-        /*System.out.println("Modificar puntaje de admision a " + 
+        System.out.println("Modificar puntaje de admision a " + 
                             nuevoPuntajeCarrera +" de una carrera particular " + 
-                           unaSede+"-"+unaCarrera );*/
+                           unaSede+"-"+unaCarrera );
         boolean resultado = elCtrl.editarPuntajeMinimoAdmision(unaCarrera, unaSede, nuevoPuntajeCarrera);
-        //System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de puntaje");
+        System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de puntaje");
                 
-        /*System.out.println("Modificar capacidad de admision a " +
+        System.out.println("Modificar capacidad de admision a " +
                             nuevaAdmisionCarrera +" de una carrera particular " + 
-                           unaSede+"-"+unaCarrera );*/
+                           unaSede+"-"+unaCarrera );
         resultado = elCtrl.editarCapacidadAdmision(unaCarrera, unaSede, nuevaAdmisionCarrera);
-        //System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de capacidad de admision");
+        System.out.println( resultado ? "Puntaje minimo modificado" : "No encontro la carrera para cambio de capacidad de admision");
 
-        //System.out.println("visualizar las carreras de la sede "+ unaSede);
-        //System.out.println(elCtrl.getCarrerasPorSede(unaSede));
+        System.out.println("visualizar las carreras de la sede "+ unaSede);
+        System.out.println(elCtrl.getCarrerasPorSede(unaSede));
         
     }
     

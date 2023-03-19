@@ -29,7 +29,7 @@ public class GeneradorCitas {
             int numero = (int)(Math.random()*(0-2+1)+2);
             CentroAplicacion lugar = SingletonDAO.getInstance().getTablaCentros().get(numero);
             
-            if(!(adm.registrarCitaExamen(formulario.getIdSolic(), new Date("11/11/11"), lugar))) return false;
+            if(!(adm.registrarCitaExamen(formulario.getIdSolic(), new Date("11/11/2023 10:00:00"), lugar))) return false;
             
             this.notificarFormulario(formulario);
         }

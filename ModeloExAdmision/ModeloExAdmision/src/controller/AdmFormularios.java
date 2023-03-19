@@ -107,8 +107,7 @@ public class AdmFormularios {
         return forms;
     }
     public void simularAplicacionExamen(){
-        //for poniendo los que no vinieron
-        //for poniendo puntajes a los que vinieron de acuerdo a ARCH Config Puntage Max
+        
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
         int max = Configuracion.getInstance().getMaximoPuntaje();
         for (FormularioSolicitante formulario : formulariosRegistrados) {
@@ -118,7 +117,7 @@ public class AdmFormularios {
                 formulario.getDetalleExamen().setPuntajeObtenido(0);
             }
             else{
-                int rand = (int)(Math.random()*(600-max+1)+max);
+                int rand = (int)(Math.random()*(400-max+1)+max);//nota minima 400, para que existan varios ADMITIDOS
                 formulario.getDetalleExamen().setPuntajeObtenido(rand);
             }
         }
@@ -126,7 +125,7 @@ public class AdmFormularios {
     
     public void definirEstadoAdmisionCandidatos(){
         
-        //for formularios: condiciones de punto 6
+     
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
         Collections.sort(formulariosRegistrados,new RankingNotas());
         HashMap<String, Carrera> mapaCarreras = new HashMap<>();
