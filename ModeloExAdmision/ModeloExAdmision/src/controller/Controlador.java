@@ -77,29 +77,26 @@ public class Controlador {
     }
   
     private boolean generarCitas(){
-        
         GeneradorCitas citas = new GeneradorCitas();
         return citas.asignarCitasASolicitantes();
     }
     
-    public String getResultadoAdmision(int idSolic) {
-        return admFormularios.getResultadoAdmision(idSolic);
-    }
-    
-    public ArrayList<FormularioSolicitante> getFormulariosPorCarrera(boolean Ordenado) {
-        return admFormularios.getResultadosFormularios(Ordenado);
-    }
-    
-  
     public void simularAplicacionExamen(){
         this.generarCitas();
-        
         admFormularios.simularAplicacionExamen();
     }
     
-    
     public void definirSituacionCandidatos(){
-        
         admFormularios.definirEstadoAdmisionCandidatos();
+    }
+    
+    public ArrayList<FormularioSolicitante> getResultadosFormularios_Solicitante(String codigoCarrera) {
+        return admFormularios.getResultadosFormularios_Solicitante(codigoCarrera);
+    }
+    public ArrayList<FormularioSolicitante> getResultadosFormularios_Estado(String codigoCarrera) {
+        return admFormularios.getResultadosFormularios_Estado(codigoCarrera);
+    }
+    public String getResultadoAdmision(int idSolic) {
+        return admFormularios.getResultadoAdmision(idSolic);
     }
 }

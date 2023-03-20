@@ -15,5 +15,6 @@ public interface IParametros {
     String ADMIN_USR  = "ADMIN_USR";
     String ADMIN_PWD = "ADMIN_PWD";
     
-    
+    int ID_SOLICITANTE = 1003;
+    String CODIGO_CARRERA = "IC";
 }

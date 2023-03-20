@@ -64,48 +64,6 @@ public class AdmFormularios {
         examen.setLugarExamen(lugar);
         return true;
     }
-    
-    public String getResultadoAdmision(int idSolic) {
-        
-        FormularioSolicitante formSolc = SingletonDAO.getInstance().consultarFormulario(idSolic);
-        if (formSolc == null)
-            return "Solicitante no registrado";
-        
-        TEstadoSolicitante estadoForm = formSolc.getEstado();
-        
-        // Checkear si el estado del solicitante es permitido
-        if (estadoForm == TEstadoSolicitante.ADMITIDO || estadoForm == TEstadoSolicitante.POSTULANTE || estadoForm == TEstadoSolicitante.RECHAZADO) {
-            return formSolc.strResultadoCompleto();
-        }
-        return "Aun no se encuentra disponible";
-    }
-    
-    public ArrayList<FormularioSolicitante> getResultadosFormularios(boolean Ordenado) {
-        ArrayList<FormularioSolicitante> forms = new ArrayList();
-        
-        List<Carrera> tablaCarreras = SingletonDAO.getInstance().getCarreras();
-        Set<String> codigosCarreras = new HashSet<String>();
-        
-        // Añadimos los codigos de carreras al conjunto de codigos
-        for (Carrera carrSeleccionada : tablaCarreras) {
-            codigosCarreras.add(carrSeleccionada.getCodigo());
-        }
-        
-        // Agregamos los datos de carrera, solicitante y resultado
-        for (String codigoCarrera : codigosCarreras) {
-            forms.addAll(SingletonDAO.getInstance().getFormulariosPorCarrera(codigoCarrera));
-        }
-        
-        if (Ordenado) {
-            for (int i = 0; i < forms.size(); i++) {
-                if (!forms.get(i).aplicoPrueba()) {
-                    forms.remove(i--);
-                }
-            }
-        }
-        
-        return forms;
-    }
     public void simularAplicacionExamen(){
         
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
@@ -125,7 +83,6 @@ public class AdmFormularios {
     
     public void definirEstadoAdmisionCandidatos(){
         
-     
         ArrayList<FormularioSolicitante> formulariosRegistrados = SingletonDAO.getInstance().getTablaFormularios();
         Collections.sort(formulariosRegistrados,new RankingNotas());
         HashMap<String, Carrera> mapaCarreras = new HashMap<>();
@@ -133,8 +90,6 @@ public class AdmFormularios {
         for (Carrera carrera : SingletonDAO.getInstance().getCarreras()) {
             mapaCarreras.put(carrera.getCodigo()+carrera.getSede().getCodigo(), carrera);
         }
-        
-        
         for (FormularioSolicitante formulario : formulariosRegistrados) {
             
             if(formulario.getEstado() != TEstadoSolicitante.AUSENTE){
@@ -149,10 +104,48 @@ public class AdmFormularios {
                     formulario.setEstado(TEstadoSolicitante.POSTULANTE);
                 else
                     formulario.setEstado(TEstadoSolicitante.RECHAZADO);
-            
             }
-            
-            
         }
+    }
+    
+    public String getResultadoAdmision(int idSolic) {
+        
+        FormularioSolicitante formSolc = SingletonDAO.getInstance().consultarFormulario(idSolic);
+        if (formSolc == null)
+            return "Solicitante no registrado";
+        
+        TEstadoSolicitante estadoForm = formSolc.getEstado();
+        
+        // Checkear si el estado del solicitante es permitido
+        if (estadoForm == TEstadoSolicitante.ADMITIDO || estadoForm == TEstadoSolicitante.POSTULANTE || estadoForm == TEstadoSolicitante.RECHAZADO) {
+            return formSolc.strResultadoCompleto();
+        }
+        return "Aun no se encuentra disponible";
+    }
+    
+    public ArrayList<FormularioSolicitante> getResultadosFormularios_Solicitante(String CodigoCarrera) {
+        ArrayList<FormularioSolicitante> forms = SingletonDAO.getInstance().getTablaFormularios();
+        
+        for (int i = 0; i < forms.size(); i++) {
+            if (!forms.get(i).getCarreraSolic().getCodigo().equals(CodigoCarrera)) {
+                forms.remove(i--);
+            }
+        }
+        if (!forms.isEmpty())
+            forms.sort((o1, o2) -> Integer.valueOf( o1.getIdSolic()).compareTo(o2.getIdSolic()) );
+        
+        return forms;
+    }
+    
+    public ArrayList<FormularioSolicitante> getResultadosFormularios_Estado(String CodigoCarrera) {
+        ArrayList<FormularioSolicitante> forms = SingletonDAO.getInstance().getTablaFormularios();
+        
+        for (int i = 0; i < forms.size(); i++) {
+            if (!forms.get(i).getCarreraSolic().getCodigo().equals(CodigoCarrera) || forms.get(i).getEstado().equals(TEstadoSolicitante.AUSENTE)) {
+                forms.remove(i--);
+            }
+        }
+        
+        return forms;
     }
 }

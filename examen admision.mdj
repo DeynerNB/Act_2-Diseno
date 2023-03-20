@@ -1131,6 +1131,24 @@
 											"height": 13,
 											"text": "-admForms: AdmFormularios",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGG/LfBCzr3tPM=",
+											"_parent": {
+												"$ref": "AAAAAAF7d9zkSWR6fB4="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/LfA5zr0B0I="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 733,
+											"top": 243,
+											"width": 559.60302734375,
+											"height": 13,
+											"text": "+Attribute1",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
@@ -1386,13 +1404,30 @@
 											"height": 13,
 											"text": "+getFormulariosPorCarrera_Estado(codigoCarrera: String): Collection<FormularioSolicitante>",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/LiAyEd1DzA=",
+											"_parent": {
+												"$ref": "AAAAAAF7d9zkSWR7i5o="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/LiAwEdyl04="
+											},
+											"font": "Arial;13;0",
+											"left": 733,
+											"top": 461,
+											"width": 559.60302734375,
+											"height": 13,
+											"text": "+getResultadoAdmision(idSolic: int): String",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 728,
 									"top": 246,
 									"width": 569.60302734375,
-									"height": 218
+									"height": 233
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4662,13 +4697,30 @@
 											"height": 13,
 											"text": "+actualizarFormulario(id: int, fechaExamen: Date, lugar: CentroAplicacion): boolean",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/NB1LeKaXi8=",
+											"_parent": {
+												"$ref": "AAAAAAF7eRa0/ui2EEM="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/NB09uKLgvA="
+											},
+											"font": "Arial;13;0",
+											"left": 1077,
+											"top": 1135,
+											"width": 487.36669921875,
+											"height": 13,
+											"text": "+getFormulariosPorCarrera(codigo: String): Collection<FormularioSolicitante>",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1072,
 									"top": 920,
 									"width": 497.36669921875,
-									"height": 218
+									"height": 233
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -6376,13 +6428,30 @@
 											"height": 13,
 											"text": "+getter_setter()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/NFAfu2yUQM=",
+											"_parent": {
+												"$ref": "AAAAAAF7px3Pu0ExiCM="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/NFAY+2aPXg="
+											},
+											"font": "Arial;13;0",
+											"left": 2229,
+											"top": 799,
+											"width": 203.7724609375,
+											"height": 13,
+											"text": "+aplicoPrueba(): Boolean",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 2224,
 									"top": 764,
 									"width": 213.7724609375,
-									"height": 38
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -8210,7 +8279,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2137,
+									"left": 2142,
 									"top": 603,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8231,7 +8300,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 2137,
+									"left": 2142,
 									"top": 588,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8252,7 +8321,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2137,
+									"left": 2142,
 									"top": 633,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -8271,7 +8340,7 @@
 							"tail": {
 								"$ref": "AAAAAAF7pyx4AKc84Aw="
 							},
-							"points": "2050:624;2224:624",
+							"points": "2060:624;2224:624",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF7pzCrPM4yMls="
@@ -8324,7 +8393,7 @@
 											"font": "Arial;13;1",
 											"left": 1493,
 											"top": 463,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "AdmFormularios"
 										},
@@ -8359,7 +8428,7 @@
 									"font": "Arial;13;0",
 									"left": 1488,
 									"top": 456,
-									"width": 563.134765625,
+									"width": 573.23388671875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF7pyx4AKc+5Rg="
@@ -8396,7 +8465,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 486,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "-consecutivoForms: int",
 											"horizontalAlignment": 0
@@ -8405,7 +8474,7 @@
 									"font": "Arial;13;0",
 									"left": 1488,
 									"top": 481,
-									"width": 563.134765625,
+									"width": 573.23388671875,
 									"height": 23
 								},
 								{
@@ -8430,7 +8499,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 509,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+AdmFormularios()",
 											"horizontalAlignment": 0
@@ -8447,7 +8516,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 524,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+getNext(): int",
 											"horizontalAlignment": 0
@@ -8464,7 +8533,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 539,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+registrarForm(datos: DTOFormulario): int",
 											"horizontalAlignment": 0
@@ -8481,7 +8550,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 554,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+getFormularios(estado: TEstadoSolicitante): Collection<Formulario>",
 											"horizontalAlignment": 0
@@ -8498,7 +8567,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 569,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+getFormulario(id: int): FormularioSolicitante",
 											"horizontalAlignment": 0
@@ -8515,7 +8584,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 584,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+editarFormulario(form: FormularioSolicitante): boolean",
 											"horizontalAlignment": 0
@@ -8532,7 +8601,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 599,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+registrarCitaExamen(numero: int, fechaExamen: Date, lugar: CentroAplicacion): boolean",
 											"horizontalAlignment": 0
@@ -8549,7 +8618,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 614,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+simularAplicacionExamen(): void",
 											"horizontalAlignment": 0
@@ -8566,7 +8635,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 629,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+definirEstadoAdmisionCandidatos(): void",
 											"horizontalAlignment": 0
@@ -8583,7 +8652,7 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 644,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+getDesgloseCandidatosPorSolicitante(unaCarrera: Carrera): Collection<FormularioSolicitante>",
 											"horizontalAlignment": 0
@@ -8600,17 +8669,68 @@
 											"font": "Arial;13;0",
 											"left": 1493,
 											"top": 659,
-											"width": 553.134765625,
+											"width": 563.23388671875,
 											"height": 13,
 											"text": "+getDesgloseCandidatosPorEstado(unaCarrera: Carrera): Collection<FormularioSolicitante>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/M4gcniXx3k=",
+											"_parent": {
+												"$ref": "AAAAAAF7pyx4CadD5F0="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/M4gVnh5ft0="
+											},
+											"font": "Arial;13;0",
+											"left": 1493,
+											"top": 674,
+											"width": 563.23388671875,
+											"height": 13,
+											"text": "+getResultadoAdmision(idSolic: int): String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/M5OtX2J6+M=",
+											"_parent": {
+												"$ref": "AAAAAAF7pyx4CadD5F0="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/M5OnH1rQic="
+											},
+											"font": "Arial;13;0",
+											"left": 1493,
+											"top": 689,
+											"width": 563.23388671875,
+											"height": 13,
+											"text": "+getResultadosFormularios_Solicitante(CodigoCarrera: String): Collection<FormularioSolicitante>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGG/M5c6n/nSOg=",
+											"_parent": {
+												"$ref": "AAAAAAF7pyx4CadD5F0="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/M5c13/J77Y="
+											},
+											"font": "Arial;13;0",
+											"left": 1493,
+											"top": 704,
+											"width": 563.23388671875,
+											"height": 13,
+											"text": "+getResultadosFormularios_Estado(CodigoCarrera: String): Collection<FormularioSolicitante>",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1488,
 									"top": 504,
-									"width": 563.134765625,
-									"height": 173
+									"width": 573.23388671875,
+									"height": 218
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -8652,7 +8772,7 @@
 							"containerChangeable": true,
 							"left": 1488,
 							"top": 456,
-							"width": 563.134765625,
+							"width": 573.23388671875,
 							"height": 305,
 							"nameCompartment": {
 								"$ref": "AAAAAAF7pyx4AKc9SqA="
@@ -14459,6 +14579,15 @@
 									"type": {
 										"$ref": "AAAAAAF7pyx4AKc6bo0="
 									}
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAGG/LfA5zr0B0I=",
+									"_parent": {
+										"$ref": "AAAAAAF7d9zkSWRyWIY="
+									},
+									"name": "Attribute1",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -14835,6 +14964,34 @@
 												"$ref": "AAAAAAF7wps6l3603/g="
 											},
 											"type": "Collection<FormularioSolicitante>",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGG/LiAwEdyl04=",
+									"_parent": {
+										"$ref": "AAAAAAF7d9zkSWRyWIY="
+									},
+									"name": "getResultadoAdmision",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/LjrWE0ZJnA=",
+											"_parent": {
+												"$ref": "AAAAAAGG/LiAwEdyl04="
+											},
+											"name": "idSolic",
+											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/LjrWk0aUN0=",
+											"_parent": {
+												"$ref": "AAAAAAGG/LiAwEdyl04="
+											},
+											"type": "String",
 											"direction": "return"
 										}
 									]
@@ -15498,6 +15655,34 @@
 														"$ref": "AAAAAAF7wUw+eNOJ0r8="
 													},
 													"type": "boolean",
+													"direction": "return"
+												}
+											]
+										},
+										{
+											"_type": "UMLOperation",
+											"_id": "AAAAAAGG/NB09uKLgvA=",
+											"_parent": {
+												"$ref": "AAAAAAF7eRa0/eit5Qs="
+											},
+											"name": "getFormulariosPorCarrera",
+											"parameters": [
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAGG/NDKaOXaXFA=",
+													"_parent": {
+														"$ref": "AAAAAAGG/NB09uKLgvA="
+													},
+													"name": "codigo",
+													"type": "String"
+												},
+												{
+													"_type": "UMLParameter",
+													"_id": "AAAAAAGG/NDKaOXblo4=",
+													"_parent": {
+														"$ref": "AAAAAAGG/NB09uKLgvA="
+													},
+													"type": "Collection<FormularioSolicitante>",
 													"direction": "return"
 												}
 											]
@@ -16187,6 +16372,90 @@
 											"_id": "AAAAAAF7wp5gkpjGZXE=",
 											"_parent": {
 												"$ref": "AAAAAAF7wp47JJguyDI="
+											},
+											"type": "Collection<FormularioSolicitante>",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGG/M4gVnh5ft0=",
+									"_parent": {
+										"$ref": "AAAAAAF7pyx4AKc6bo0="
+									},
+									"name": "getResultadoAdmision",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M6usoZgLas=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M4gVnh5ft0="
+											},
+											"name": "idSolic",
+											"type": "int"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M6usoZhxEI=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M4gVnh5ft0="
+											},
+											"type": "String",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGG/M5OnH1rQic=",
+									"_parent": {
+										"$ref": "AAAAAAF7pyx4AKc6bo0="
+									},
+									"name": "getResultadosFormularios_Solicitante",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M8ieYnp/LQ=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M5OnH1rQic="
+											},
+											"name": "CodigoCarrera",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M8ieonqi5o=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M5OnH1rQic="
+											},
+											"type": "Collection<FormularioSolicitante>",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGG/M5c13/J77Y=",
+									"_parent": {
+										"$ref": "AAAAAAF7pyx4AKc6bo0="
+									},
+									"name": "getResultadosFormularios_Estado",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M82DY/Knbg=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M5c13/J77Y="
+											},
+											"name": "CodigoCarrera",
+											"type": "String"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/M82DY/L9wo=",
+											"_parent": {
+												"$ref": "AAAAAAGG/M5c13/J77Y="
 											},
 											"type": "Collection<FormularioSolicitante>",
 											"direction": "return"
@@ -17083,6 +17352,25 @@
 										"$ref": "AAAAAAF7px3PuUEoKSY="
 									},
 									"name": "getter_setter"
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGG/NFAY+2aPXg=",
+									"_parent": {
+										"$ref": "AAAAAAF7px3PuUEoKSY="
+									},
+									"name": "aplicoPrueba",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGG/NF0cvElj2A=",
+											"_parent": {
+												"$ref": "AAAAAAGG/NFAY+2aPXg="
+											},
+											"type": "Boolean",
+											"direction": "return"
+										}
+									]
 								}
 							]
 						},

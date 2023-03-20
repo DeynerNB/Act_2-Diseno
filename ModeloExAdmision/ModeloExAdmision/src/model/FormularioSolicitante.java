@@ -207,6 +207,10 @@ public class FormularioSolicitante {
                 "Calificacion: " + detalleExamen.getPuntajeObtenido() + "\t" +
                 "Estado: " + estado;
     }
+    public String resultadoBasico() {
+        return  "idSolic: " + idSolic + "\t" +
+                "Calificacion: " + detalleExamen.getPuntajeObtenido();
+    }
     
     public boolean aplicoPrueba() {
         switch (estado) {

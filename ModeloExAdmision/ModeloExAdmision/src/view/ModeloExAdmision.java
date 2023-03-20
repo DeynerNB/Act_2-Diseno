@@ -117,32 +117,36 @@ public class ModeloExAdmision {
         Configuracion.getInstance().guardarProperties();
     }
     
-    public static void demoVisualizarResultadoPorSolicitante(int idSolic) {
-        System.out.println(elCtrl.getResultadoAdmision(idSolic));
+    public static void demoVisualizarResultadoPorSolicitante() {
+        System.out.println(elCtrl.getResultadoAdmision(IParametros.ID_SOLICITANTE));
     }
-    public static void demoVisualizarResultadoPorCarrera(boolean Ordenado) {
-        for (FormularioSolicitante form : elCtrl.getFormulariosPorCarrera(Ordenado)) {
+    public static void demoVisualizarResultado_Estado() {
+        for (FormularioSolicitante form : elCtrl.getResultadosFormularios_Estado(IParametros.CODIGO_CARRERA)) {
             System.out.println(form.getResultado());
+        }
+    }
+    public static void demoVisualizarResultado_Solicitante() {
+        for (FormularioSolicitante form : elCtrl.getResultadosFormularios_Solicitante(IParametros.CODIGO_CARRERA)) {
+            System.out.println(form.resultadoBasico());
         }
     }
     
     public static void main(String[] args) {
-        System.out.println("En demoConfiguracion");
+        System.out.println("En demoConfiguracion\n");
         demoConfiguracion();
     
-        System.out.println("En demoCarreras");
+        System.out.println("En demoCarreras\n");
         demoCarreras();
         
-        System.out.println("En demoFormulario");
+        System.out.println("En demoFormulario\n");
         demoFormulario();
         
-        System.out.println("> Visualizar resultado de 1 estudiante");
-        demoVisualizarResultadoPorSolicitante(1003);
-        
-        System.out.println("> Visualizar resultados de cada carrera");
-        demoVisualizarResultadoPorCarrera(false);
-        System.out.println("> Visualizar resultados de cada carrera ordenados por estado");
-        demoVisualizarResultadoPorCarrera(true);
+        System.out.println("\n> Visualizar resultado de 1 estudiante");
+        demoVisualizarResultadoPorSolicitante();
+        System.out.println("\n> Visualizar resultados de una carrera por Estado");
+        demoVisualizarResultado_Estado();
+        System.out.println("\n> Visualizar resultados de una carrera por Identificacion");
+        demoVisualizarResultado_Solicitante();
      }
     
 }
